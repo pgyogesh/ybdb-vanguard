@@ -94,6 +94,16 @@ Detect, compare, and pin query plans with QPM (EA, v2025.2.3+). Capture every pl
 
 ---
 
+#### Transactions & Isolation Levels
+![Dev](https://img.shields.io/badge/dev-orange?style=for-the-badge)
+![Architect](https://img.shields.io/badge/arc-green?style=for-the-badge)
+
+[README →](init-txn/README.md) | devcontainer: `init-txn`
+
+Distributed ACID transactions and the three YSQL isolation levels. Reproduce a **lost update** at `READ COMMITTED` and fix it with `SELECT ... FOR UPDATE`; reproduce **write skew** at `REPEATABLE READ` (snapshot) and prevent it with `SERIALIZABLE`; then handle the resulting `40001`/`40P01` failures with an application retry loop. Finishes with the **YugabyteDB-specific** distributed concurrency control: **Wait-on-Conflict vs Fail-on-Conflict**, **transaction priorities** (`yb_get_current_transaction_priority()`), and the distributed lock manager (`yb_lock_status()`). Concurrency is made deterministic via two coordinated sessions — run it guided or in two side-by-side YSQL shells. Starts with `yb_enable_read_committed_isolation=true` so `READ COMMITTED` behaves like true PostgreSQL.
+
+---
+
 ### Data Placement & Architecture
 
 #### Colocation & Distributed Tables
@@ -377,6 +387,7 @@ Secure a Spring Boot application with YugabyteDB over TLS using cloud-native sec
 | Distributed SQL | `init-dsql` | 3 | 4 | 8 GB | 32 GB |
 | Query Tuning | `init-qt` | 3 | 4 | 8 GB | 32 GB |
 | Query Plan Management | `init-qpm` | 1 | 4 | 8 GB | 32 GB |
+| Transactions & Isolation | `init-txn` | 1 | 4 | 8 GB | 32 GB |
 | **Data Placement & Architecture** | | | | | |
 | Colocation | `init-colocate` | 3 | 4 | 8 GB | 32 GB |
 | Tablespaces | `init-tablespace` | 3 | 4 | 8 GB | 32 GB |

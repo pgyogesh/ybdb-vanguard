@@ -1,0 +1,8 @@
+{
+  "name": "Transactions & Isolation Levels",
+  "containerEnv": {
+    "ART_PATH": "init-txn",
+    "SCRIPT_PATH": "init-txn"
+  },
+  "postStartCommand": "bash -c 'bash .devcontainer/scripts/start-ybdb.sh 1 yb_enable_read_committed_isolation=true && ysqlsh -h 127.0.0.1 -X -f init-txn/setup.sql && echo \"\" && echo \"▶  Terminal → Run Task → txn-demo   (guided demo: bash prompt.sh)\" && echo \"▶  Terminal → Run Task → ysql-a / ysql-b  (two shells for the manual workshop)\"'"
+}

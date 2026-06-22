@@ -62,6 +62,7 @@
           "init-scale": true,
           "init-tablespace": true,
           "init-tt": true,
+          "init-txn": true,
           "init-voyager-mariadb": true,
           "init-voyager-mysql": true,
           "init-voyager-postgres": true,

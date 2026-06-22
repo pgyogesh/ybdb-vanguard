@@ -23,6 +23,7 @@ exercises=(
   "Distributed SQL Universe"
   "Query Tuning Tips & Tricks"
   "Query Plan Management (QPM)"
+  "Transactions & Isolation Levels"
 
   # ── Data Placement & Architecture ─────────────────────────────────────────
   "Colocation & Distributed Tables"
@@ -73,6 +74,7 @@ devcontainers=(
   "init-dsql"
   "init-qt"
   "init-qpm"
+  "init-txn"
   "init-colocate"
   "init-tablespace"
   "init-scale"
@@ -113,6 +115,7 @@ links=(
   ""
   ""
   ""
+  ""
   "https://github.com/srinivasa-vasu/yb-cdc-streams"
   ""
   ""
@@ -130,6 +133,7 @@ links=(
 )
 
 categories=(
+  "SQL Fundamentals"
   "SQL Fundamentals"
   "SQL Fundamentals"
   "SQL Fundamentals"
@@ -165,6 +169,7 @@ roles=(
   "dev arc"
   "dev ops sre arc"
   "dev arc"
+  "dev arc"
   "dev ops arc"
   "ops sre arc"
   "ops sre arc"
@@ -192,6 +197,7 @@ roles=(
 
 # Non-default resource requirements (shown as a warning; "" = standard 4c/8g)
 resources=(
+  ""
   ""
   ""
   ""

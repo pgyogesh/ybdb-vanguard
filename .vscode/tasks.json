@@ -113,6 +113,48 @@
 
 
     // ═══════════════════════════════════════════════════════════════════════
+    // init-txn  — Transactions & Isolation Levels
+    // ═══════════════════════════════════════════════════════════════════════
+
+    {
+      "label": "txn-demo",
+      "detail": "\"The Double-Spend Problem\" — lost update, SELECT FOR UPDATE, write skew, SERIALIZABLE, retry-on-40001 (init-txn/prompt.sh)",
+      "type": "shell",
+      "command": "[ '${env:ART_PATH}' = 'init-txn' ] || exit 0; cd init-txn && echo '💸 txn-demo  —  Transactions & Isolation Levels' && echo '   Run when ready: bash prompt.sh' && exec bash",
+      "runOptions": { "runOn": "folderOpen" },
+      "presentation": {
+        "reveal": "always",
+        "panel": "dedicated",
+        "group": "txn",
+        "showReuseMessage": false,
+        "clear": true,
+        "close": true
+      },
+      "problemMatcher": []
+    },
+
+    {
+      "label": "ysql-a",
+      "detail": "Session A — a YSQL shell for the manual two-session transaction workshop (init-txn)",
+      "type": "shell",
+      "command": "[ '${env:ART_PATH}' = 'init-txn' ] || exit 0; echo '🟡 Session A' && until (echo >/dev/tcp/127.0.0.1/5433) 2>/dev/null; do sleep 2; done && ysqlsh -h 127.0.0.1",
+      "runOptions": { "runOn": "folderOpen" },
+      "presentation": { "reveal": "always", "panel": "dedicated", "group": "txn-ab", "showReuseMessage": false, "clear": false, "close": true },
+      "problemMatcher": []
+    },
+
+    {
+      "label": "ysql-b",
+      "detail": "Session B — a second YSQL shell for the manual two-session transaction workshop (init-txn)",
+      "type": "shell",
+      "command": "[ '${env:ART_PATH}' = 'init-txn' ] || exit 0; echo '🟣 Session B' && until (echo >/dev/tcp/127.0.0.1/5433) 2>/dev/null; do sleep 2; done && ysqlsh -h 127.0.0.1",
+      "runOptions": { "runOn": "folderOpen" },
+      "presentation": { "reveal": "always", "panel": "dedicated", "group": "txn-ab", "showReuseMessage": false, "clear": false, "close": true },
+      "problemMatcher": []
+    },
+
+
+    // ═══════════════════════════════════════════════════════════════════════
     // init-colocate  — Colocation & Distributed Tables
     // ═══════════════════════════════════════════════════════════════════════
 
