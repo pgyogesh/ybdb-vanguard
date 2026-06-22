@@ -379,6 +379,18 @@ Secure a Spring Boot application with YugabyteDB over TLS using cloud-native sec
 
 ---
 
+### Support & Diagnostics
+
+#### Safe Node Takedown
+![Ops](https://img.shields.io/badge/ops-blue?style=for-the-badge)
+![SRE](https://img.shields.io/badge/sre-yellow?style=for-the-badge)
+
+[README →](init-safe/README.md) | devcontainer: `init-safe`
+
+The pre-maintenance safety gate every operator should run before rolling/upgrading nodes: **`yb-admin are_nodes_safe_to_take_down`**. On a 3-node RF3 cluster with a single large tablet, see the check pass on a healthy cluster, then deliberately break it two ways — delete a replica so it must re-bootstrap under a throttled `remote_bootstrap_rate_limit_bytes_per_sec` (a lagging follower), and force a tablet to RF1 with `yb-ts-cli unsafe_config_change` — and watch the check correctly refuse the takedown. Teaches how the command reasons about Raft quorum, follower lag, and under-replication, plus the `list_tablets` / `list_tablet_servers` / `delete_tablet` diagnostics around it. **Support/ops exercise — not part of upstream.**
+
+---
+
 ## Devcontainer Reference
 
 | Exercise | Directory | Nodes | CPUs | RAM | Disk |
@@ -417,6 +429,8 @@ Secure a Spring Boot application with YugabyteDB over TLS using cloud-native sec
 | MariaDB Migration | `init-voyager-mariadb` | 1 | 4 | 8 GB | 32 GB |
 | Oracle Migration | `init-voyager-oracle` | 1 | **8** | **16 GB** | **64 GB** |
 | PostgreSQL Migration | `init-voyager-postgres` | 1 | 4 | 8 GB | 32 GB |
+| **Support & Diagnostics** | | | | | |
+| Safe Node Takedown | `init-safe` | 3 | 4 | 8 GB | 32 GB |
 
 All exercises default to Ubuntu-based devcontainer image on `linux/amd64` and `linux/arm64`.
 

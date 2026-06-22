@@ -1,0 +1,8 @@
+{
+  "name": "Safe Node Takedown (are_nodes_safe_to_take_down)",
+  "containerEnv": {
+    "ART_PATH": "init-safe",
+    "SCRIPT_PATH": "init-safe"
+  },
+  "postStartCommand": "bash -c 'bash .devcontainer/scripts/start-ybdb.sh 3 && ysqlsh -h 127.0.0.1 -X -f init-safe/setup.sql && echo \"\" && echo \"▶  Terminal → Run Task → safe-demo   (guided demo: bash prompt.sh)\" && echo \"▶  Terminal → Run Task → admin       (yb-admin / yb-ts-cli shell for the manual workshop)\"'"
+}

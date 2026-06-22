@@ -41,6 +41,7 @@
           "init-privacy": true,
           "init-qpm": true,
           "init-rls": true,
+          "init-safe": true,
           "init-scale": true,
           "init-tablespace": true,
           "init-tt": true,

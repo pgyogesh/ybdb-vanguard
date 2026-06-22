@@ -59,6 +59,7 @@
           "init-qpm": true,
           "init-qt": true,
           "init-rls": true,
+          "init-safe": true,
           "init-tablespace": true,
           "init-tt": true,
           "init-txn": true,

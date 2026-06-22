@@ -979,6 +979,38 @@
         "close": true
       },
       "problemMatcher": []
+    },
+
+
+    // ═══════════════════════════════════════════════════════════════════════
+    // init-safe  — Safe Node Takedown (are_nodes_safe_to_take_down)
+    // ═══════════════════════════════════════════════════════════════════════
+
+    {
+      "label": "safe-demo",
+      "detail": "\"Is it safe to take this node down?\" — are_nodes_safe_to_take_down across a healthy cluster, a lagging replica, and an RF1 tablet (init-safe/prompt.sh)",
+      "type": "shell",
+      "command": "[ '${env:ART_PATH}' = 'init-safe' ] || exit 0; cd init-safe && echo '🛡️  safe-demo  —  Safe Node Takedown' && echo '   Run when ready: bash prompt.sh' && exec bash",
+      "runOptions": { "runOn": "folderOpen" },
+      "presentation": {
+        "reveal": "always",
+        "panel": "dedicated",
+        "group": "safe",
+        "showReuseMessage": false,
+        "clear": true,
+        "close": true
+      },
+      "problemMatcher": []
+    },
+
+    {
+      "label": "admin",
+      "detail": "yb-admin / yb-ts-cli shell ($MASTERS preset) for the manual are_nodes_safe_to_take_down workshop (init-safe)",
+      "type": "shell",
+      "command": "[ '${env:ART_PATH}' = 'init-safe' ] || exit 0; echo '🔧 admin shell' && until (echo >/dev/tcp/127.0.0.1/5433) 2>/dev/null; do sleep 2; done && export MASTERS=127.0.0.1:7100,127.0.0.2:7100,127.0.0.3:7100 && echo '   master addresses are preset in $MASTERS' && echo '   try: yb-admin -master_addresses $MASTERS list_all_tablet_servers' && exec bash",
+      "runOptions": { "runOn": "folderOpen" },
+      "presentation": { "reveal": "always", "panel": "dedicated", "group": "safe", "showReuseMessage": false, "clear": false, "close": true },
+      "problemMatcher": []
     }
 
   ]
